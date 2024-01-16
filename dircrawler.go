@@ -10,10 +10,14 @@ func getFiles(root string) ([]ObsidianDoc, error) {
 	var files []ObsidianDoc
 	err := filepath.WalkDir(root, func(path string, info fs.DirEntry, err error) error {
 		if !info.IsDir() {
-			filename := strings.Split(path, "/")
+			filenameSlice := strings.Split(path, "/")
+			filename := filenameSlice[len(filenameSlice)-1]
+			extensionSlice := strings.Split(path, ".")
+			extension := extensionSlice[len(extensionSlice)-1]
 			obsDoc := ObsidianDoc{
-				path:     path,
-				filename: filename[len(filename)-1],
+				path:      path,
+				filename:  filename,
+				extension: extension,
 			}
 			files = append(files, obsDoc)
 		}
