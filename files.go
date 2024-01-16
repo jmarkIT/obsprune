@@ -41,3 +41,7 @@ func (o *ObsidianDoc) setAttachments() {
 		fmt.Println(err)
 	}
 }
+
+func (o *ObsidianDoc) deleteFile() {
+	os.Remove(o.path)
+}

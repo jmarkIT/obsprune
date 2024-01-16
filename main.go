@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strings"
 )
 
 func main() {
@@ -21,9 +22,16 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
 	for _, attachment := range allAttachments {
-		if slices.Contains(attSlice, attachment.filename) {
-			fmt.Println(attachment.path)
+		if !slices.Contains(attSlice, attachment.filename) {
+			fmt.Printf("Are you sure you want to delete\n")
+			fmt.Printf("%s\n> ", attachment.path)
+			var confirmation string
+			fmt.Scanln(&confirmation)
+			if strings.ToLower(confirmation) == "y" {
+				attachment.deleteFile()
+			}
 		}
 	}
 
