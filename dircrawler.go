@@ -1,14 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"io/fs"
+	"path/filepath"
 )
 
-func visit(path string, d fs.DirEntry, err error) error {
-	if err != nil {
-		return err
-	}
-	fmt.Println(" ", path, d.IsDir())
-	return nil
+func getFiles(root string) ([]string, error) {
+	var files []string
+	err := filepath.WalkDir(root, func(path string, info fs.DirEntry, err error) error {
+		if !info.IsDir() {
+			files = append(files, path)
+		}
+		return nil
+	})
+	return files, err
 }
