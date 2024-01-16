@@ -10,10 +10,14 @@ import (
 type ObsidianDoc struct {
 	path        string
 	filename    string
+	extension   string
 	attachments []string
 }
 
 func (o *ObsidianDoc) setAttachments() {
+	if o.extension != "md" && o.extension != "txt" {
+		return
+	}
 	file, err := os.Open(o.path)
 	if err != nil {
 		fmt.Println(err)
@@ -36,10 +40,4 @@ func (o *ObsidianDoc) setAttachments() {
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
 	}
-}
-
-type ObsidianAttachment struct {
-	path       string
-	filename   string
-	referenced bool
 }
