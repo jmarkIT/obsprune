@@ -2,11 +2,22 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"slices"
 	"strings"
 )
 
 func main() {
+	usage := `usage: obspruner path_to_obsidian_vault path_to_obsidian_vault_attachments`
+	if len(os.Args) != 3 {
+		fmt.Println("Error: Incorrect positional arguments")
+		fmt.Println(usage)
+		os.Exit(1)
+	}
+	obsidianRoot := os.Args[1]
+	attachmentsDir := os.Args[2]
+	fmt.Printf("%s, %s", obsidianRoot, attachmentsDir)
+
 	allFiles, err := getFiles("/Users/james/Documents/Notes")
 	if err != nil {
 		fmt.Println(err)
