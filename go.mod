@@ -1,3 +1,3 @@
-module obsidian_cleanup
+module obspruner
 
 go 1.21.6
