@@ -15,6 +15,12 @@ func getFiles(root string) ([]ObsidianDoc, error) {
 			filename := filenameSlice[len(filenameSlice)-1]
 			extensionSlice := strings.Split(path, ".")
 			extension := extensionSlice[len(extensionSlice)-1]
+			if strings.Contains(path, "/.obsidian/") {
+				return nil
+			}
+			if extension == "DS_Store" {
+				return nil
+			}
 			obsDoc := ObsidianDoc{
 				path:      path,
 				filename:  filename,
