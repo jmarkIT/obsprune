@@ -32,6 +32,9 @@ func main() {
 	}
 
 	for _, attachment := range allAttachments {
+		if attachment.extension == "md" || attachment.extension == "canvas" {
+			continue
+		}
 		if !slices.Contains(attSlice, attachment.filename) {
 			fmt.Printf("Are you sure you want to delete\n")
 			fmt.Printf("%s\n> ", attachment.path)
