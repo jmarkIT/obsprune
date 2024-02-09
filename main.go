@@ -9,7 +9,7 @@ import (
 
 func main() {
 	usage := `usage: obspruner path_to_obsidian_vault path_to_obsidian_vault_attachments`
-	if len(os.Args) != 3 {
+	if len(os.Args) != 2 {
 		fmt.Println("Error: Incorrect positional arguments")
 		fmt.Println(usage)
 		os.Exit(1)
@@ -26,7 +26,7 @@ func main() {
 			attSlice = append(attSlice, file.attachments...)
 		}
 	}
-	allAttachments, err := getFiles(os.Args[2])
+	allAttachments, err := getFiles(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
 	}
