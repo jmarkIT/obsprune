@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	usage := `usage: obspruner path_to_obsidian_vault path_to_obsidian_vault_attachments`
+	usage := `usage: obspruner {path_to_obsidian_vault}`
 	if len(os.Args) != 2 {
 		fmt.Println("Error: Incorrect positional arguments")
 		fmt.Println(usage)
