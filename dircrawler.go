@@ -2,6 +2,7 @@ package main
 
 import (
 	"io/fs"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -10,7 +11,7 @@ func getFiles(root string) ([]ObsidianDoc, error) {
 	var files []ObsidianDoc
 	err := filepath.WalkDir(root, func(path string, info fs.DirEntry, err error) error {
 		if !info.IsDir() {
-			filenameSlice := strings.Split(path, "/")
+			filenameSlice := strings.Split(path, string(os.PathSeparator))
 			filename := filenameSlice[len(filenameSlice)-1]
 			extensionSlice := strings.Split(path, ".")
 			extension := extensionSlice[len(extensionSlice)-1]
