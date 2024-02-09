@@ -15,7 +15,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	allFiles, err := getFiles("/Users/james/Documents/Notes")
+	allFiles, err := getFiles(os.Args[1])
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -26,7 +26,7 @@ func main() {
 			attSlice = append(attSlice, file.attachments...)
 		}
 	}
-	allAttachments, err := getFiles("/Users/james/Documents/Notes/03-RESOURCES 📚/Attachments")
+	allAttachments, err := getFiles(os.Args[2])
 	if err != nil {
 		fmt.Println(err)
 	}
