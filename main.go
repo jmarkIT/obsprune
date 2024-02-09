@@ -14,9 +14,6 @@ func main() {
 		fmt.Println(usage)
 		os.Exit(1)
 	}
-	obsidianRoot := os.Args[1]
-	attachmentsDir := os.Args[2]
-	fmt.Printf("%s, %s", obsidianRoot, attachmentsDir)
 
 	allFiles, err := getFiles("/Users/james/Documents/Notes")
 	if err != nil {
